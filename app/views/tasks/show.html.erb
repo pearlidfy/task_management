@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @task %>
+
+<div>
+  <%= link_to "Edit this task", edit_task_path(@task) , class: "btn btn-secondary" %> 
+  <%= link_to "Back to tasks", tasks_path , class: "btn btn-secondary" %>
+
+  <%= button_to "Destroy this task", @task, method: :delete, class: "btn btn-danger" %>
+</div>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @task, @task.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+
+  <h2>Comments</h2>
+<% @task.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+<% end %>

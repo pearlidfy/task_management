@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Task Management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if model_signed_in? %>
+            <li class="nav-item">
+            <%# <a class="nav-link active" aria-current="page" href="#">Sign Out</a> %>
+            <%= button_to 'Sign Out', destroy_model_session_path, method: :delete , class: 'nav-link', class:"btn btn-dark" %>
+            </li>
+            <li class="nav-item">
+            <%= link_to 'Edit Profile', edit_model_registration_path, class: 'nav-link'%>
+            
+            <%# <a class="nav-link active" aria-current="page" href="#">Edit Profile</a> %>
+            </li>
+            <li class="nav-item">
+            <%# <a class="nav-link" href="#">Add</a> %>
+            <%= link_to 'Show Tasks', tasks_path, class: 'nav-link'%>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                
+                <%= link_to 'Sign Up', new_model_registration_path, class: 'nav-link'%>
+            <%# <a class="nav-link active" aria-current="page" href="#">Sign Up</a> %>
+            </li>
+            <li class="nav-item">
+            <%# <a class="nav-link active" aria-current="page" href="#">Sign In</a> %>
+            <%= link_to 'Sign In', new_model_session_path, class: 'nav-link'%>
+            </li>
+        <% end %>
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
